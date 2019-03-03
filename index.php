@@ -77,7 +77,6 @@
                          <?php include 'signin.php';
                          echo $autherr; ?>
                        <div class="form-group">
-                           <?php echo "Ragnarok"; ?>
                          <input type="text-area" class="form-control input" id="formGroupInput" name="Authinput" placeholder="Enter RegNo/Staff ID">
                        </div><br>
                        <div class="form-group">
