@@ -73,19 +73,22 @@
                      </button>
                    </div>
                    <div class="modal-body">
-                     <form>
+                     <form action="signin.php" method="POST">
+                       <?php include 'signin.php';
+                       echo $autherr; ?>
                        <div class="form-group">
-                         <input type="text-area" class="form-control input" id="formGroupInput" placeholder="Enter RegNo/Staff ID">
+                         <input type="text-area" class="form-control input" id="formGroupInput" name="Authinput" placeholder="Enter RegNo/Staff ID">
                        </div><br>
                        <div class="form-group">
-                         <input type="password" class="form-control input" id="exampleInputPassword1" placeholder="Enter Password">
+                         <input type="password" class="form-control input" id="exampleInputPassword1" name="Password" placeholder="Enter Password">
                        </div>
                        <small id="emailHelp" class="form-text text-muted">Not Registered? <a href="register.html">Register Now</a></small>
-                     </form>
+
                    </div>
                    <div class="modal-footer">
                      <button type="button" class="btn" data-dismiss="modal">Close</button>
-                     <button type="button" class="btn " role="button"><a href="index.html">Sign-In</a></button>
+                     <button type="submit" class="btn " name="submit" role="button">Sign-In</button>
+                       </form>
                    </div>
                  </div>
                </div>
@@ -185,43 +188,69 @@
 <div class="container">
   <div class="register-con">
       <center>
-      <form  role="form">
-       
+      <form  role="form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
+      <?php 
+        include 'register.php';
+        ?>
+       <!-- FULL NAME -->
           <div class="form-group">
-              <input type="text-area" class="form-control" id="Name" placeholder="Full Name" required>
+            <?php echo $errorfn; ?>
+              <input type="text-area" class="form-control" id="Name" name="FullName" placeholder="Full Name" value="<?php echo $fullname; ?>">
           </div><br>
+          <!-- REGISTRATION NUMBER -->
           <div class="form-group">
-              <input type="text-area" class="form-control"  id="Registration-no" placeholder="Registration Number" required>
+          <?php echo "$errorregno"; ?>
+              <input type="text-area" class="form-control"  id="Registration-no" name="RegistrationNumber" placeholder="Registration Number" value="<?php echo $regno; ?>">
           </div><br>
+          <!-- DEPARTMENT -->
           <div class="form-group">
-              <input type="text-area" class="form-control" id="Department" placeholder="Department" required>
+          <?php echo $errordept; ?>
+              <input type="text-area" class="form-control" id="Department" name="Department" placeholder="Department" value="<?php echo $department; ?>">
           </div><br>
+          <!-- FACULTY -->
           <div class="form-group">
-            <input type="text-area" class="form-control" id="Faculty" placeholder="Faculty" required>
+          <?php echo $errorfac; ?>
+            <input type="text-area" class="form-control" id="Faculty" name="Faculty" placeholder="Faculty" value="<?php echo $faculty; ?>">
           </div><br>
+          <!-- Email -->
           <div class="form-group">
-              <input type="email" class="form-control" id="email" placeholder="Email" required>
+          <?php echo $erroremail; ?>
+              <input type="email" class="form-control" id="email" name="Email" placeholder="Email" value="<?php echo $email; ?>">
           </div><br>
+          <!-- Duration Of Study -->
           <div class="form-group">
-            <input type="number" class="form-control" id="Duration" placeholder="Duration of Study" required>
+          <?php echo $errordos ; ?>
+            <input type="number" class="form-control" id="Duration" name="DurationOfStudy" placeholder="Duration of Study" value="<?php echo $durofstu; ?>">
           </div><br>
+          <!-- Nationality -->
           <div class="form-group">
-              <input type="text-area" class="form-control" id="Nationality" placeholder="Nationality" required>
+          <?php echo $errornationality; ?>
+              <input type="text-area" class="form-control" id="Nationality" name="Nationality" placeholder="Nationality" value="<?php echo $nationality; ?>">
           </div><br>
+          <!-- State Of Origin -->
           <div class="form-group">
-              <input type="text-area" class="form-control" id="State" placeholder="State Of Origin" required>
+          <?php echo $errorsoo; ?>
+              <input type="text-area" class="form-control" id="State" name="StateOfOrigin" placeholder="State Of Origin" value="<?php echo $staoforig; ?>">
           </div><br>
+          <!-- L.G.A -->
           <div class="form-group">
-              <input type="text-area" class="form-control" id="L.G.A" placeholder="L.G.A" required>
+          <?php echo $errorlga; ?>
+              <input type="text-area" class="form-control" id="L.G.A" name="LocalGovernmentArea" placeholder="L.G.A" value="<?php echo $locgovare; ?>">
           </div><br>
+          <!-- Birthday -->
           <div class="form-group">
-              <input type="date" class="form-control" id="Birhday" required>
+          <?php echo $errorbirthday; ?>
+              <input type="date" class="form-control" id="Birhday" name="Birthday" value="<?php echo $birthday; ?>">
           </div><br>
+          <!-- Password -->
           <div class="form-group">
-              <input type="password" class="form-control" id="Password" placeholder="Password" pattern="[A-Za-z]{8}"required>
+          <?php echo $errorpassword; ?>
+              <input type="password" class="form-control" id="Password" name="Password" placeholder="Password" value="<?php echo $password; ?>">
           </div><br>
+          <!-- Confirm Password -->
           <div class="form-group">
-              <input type="password" class="form-control" id="Confirm-Password" placeholder="Confirm Password" pattern="[A-Za-z]{8}" required>
+          <?php echo $errorconpass; ?>
+              <input type="password" class="form-control" id="Confirm-Password" name="ConfirmPassword" placeholder="Confirm Password" value="<?php echo $conpass; ?>">
           </div><br>
         
           <!-- <div class="form-group " style="margin: 0px;">
@@ -233,7 +262,7 @@
           <div class="checkbox">
             <label><input type="checkbox"> Remember me</label>
           </div><br> -->
-          <button type="submit" class="btn btn-default" href="#">Submit</button>
+          <button type="submit" class="btn btn-default" name="submit" href="#">Submit</button>
         </center>
       </form>
     

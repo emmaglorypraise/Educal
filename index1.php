@@ -73,19 +73,23 @@
                      </button>
                    </div>
                    <div class="modal-body">
-                     <form>
+                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
+                         <?php include 'signin.php';
+                         echo $autherr; ?>
                        <div class="form-group">
-                         <input type="text-area" class="form-control input" id="formGroupInput" placeholder="Enter RegNo/Staff ID">
+                           <?php echo "Ragnarok"; ?>
+                         <input type="text-area" class="form-control input" id="formGroupInput" name="Authinput" placeholder="Enter RegNo/Staff ID">
                        </div><br>
                        <div class="form-group">
-                         <input type="password" class="form-control input" id="exampleInputPassword1" placeholder="Enter Password">
+                         <input type="password" class="form-control input" id="exampleInputPassword1" name="Password" placeholder="Enter Password">
                        </div>
-                       <small id="emailHelp" class="form-text text-muted">Not Registered? <a href="register.html">Register Now</a></small>
-                     </form>
+                       <small id="emailHelp" class="form-text text-muted">Not Registered? <a href="register1.php">Register Now</a></small>
+                     
                    </div>
                    <div class="modal-footer">
                      <button type="button" class="btn" data-dismiss="modal">Close</button>
-                     <button type="button" class="btn " role="button"><a href="index.html">Sign-In</a></button>
+                     <button type="submit" name="submit" class="btn " role="button">Sign-In</button>
+                     </form>
                    </div>
                  </div>
                </div>
@@ -107,7 +111,7 @@
 <!-- main navigation -->
 <nav> 
     <ul class="nav navbar ">
-      <li class="nav-link"><a class="active" href="index.html">Home</a></li>
+      <li class="nav-link"><a class="active" href="index1.php">Home</a></li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">About <span class="caret"></span></a>
         <ul class="dropdown-menu">
