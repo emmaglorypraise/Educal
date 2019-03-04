@@ -8,14 +8,14 @@ $auth = '';
 $password = '';
 
 if (isset($_POST['submit'])){
-    $auth = mysqli_real_escape_string($conn, $_POST['Authinput']);
+    $auth = mysqli_real_escape_string($conn, $_POST['RegistrationNumber']);
     $password = mysqli_real_escape_string($conn, $_POST['Password']);
 
     if(empty($auth)){
         $autherr .= '<p><label>RegNo/Staff Id Empty</label></p>';
     }else{
         //checking if reg no. exists
-        $sql = "SELECT * FROM register WHERE RegistrationNumber='$auth'";
+        $sql = "SELECT * FROM register WHERE RegistationNumber='$auth'";
         $result = mysqli_query($conn, $sql);
         $resultcheck = mysqli_num_rows($result);
         if($resultcheck < 1){
@@ -28,10 +28,12 @@ if (isset($_POST['submit'])){
                     $autherr .= '<p>Password Error</p>';
                 }elseif($hashedpasswordcheck == true) {
                     $_SESSION['id']=$row['id'];
-                    $_SESSION['FullName']=$row['FullName'];
+                   $amen = $_SESSION['FullName']=$row['FullName'];
+                    $_SESSION['RegistrationNumber']=$row['RegistrationNumber'];
 					$_SESSION['Department']=$row['Department'];
 					$_SESSION['Faculty']=$row['Faculty'];
                     $_SESSION['Email']=$row['Email'];
+                    
                     header("Location: welcome.php");
                 }
             }
